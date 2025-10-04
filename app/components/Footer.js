@@ -37,7 +37,7 @@ const Footer = () => {
 
         <div>
           <h4 className="text-lg font-medium text-[#FFFFFF] mb-4">Connect</h4>
-          <p className="text-sm mb-2">📍UAE-Based | Trusted Worldwide</p>
+          <p className="text-sm mb-2">FlangTex Trading LLC</p>
           <p className="text-sm mb-4">📧 support@flangtex.com</p>
           <div className="flex gap-4">
             {socialLinks.map(({ icon, label, href }) => (
