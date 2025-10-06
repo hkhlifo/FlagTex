@@ -16,7 +16,7 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold text-[#FFFFFF] mb-4">FLANGTEX</h3>
           <p className="text-sm leading-relaxed text-[#AAAAAA]">
-            Precision-engineered digital experiences for industrial excellence. We deliver bold design, seamless functionality, and trusted performance across global markets.
+            FlangTex Trading LLC is a trusted supplier of high-quality piping products, serving the industrial, oil & gas, and petrochemical sectors globally.
           </p>
           <p className="text-sm italic text-[#CCCCCC] mt-4">
             Built for precision. Trusted for impact.
@@ -37,7 +37,7 @@ const Footer = () => {
 
         <div>
           <h4 className="text-lg font-medium text-[#FFFFFF] mb-4">Connect</h4>
-          <p className="text-sm mb-2">📍UAE-Based | Trusted Worldwide</p>
+          <p className="text-sm mb-2">📍USA Based</p>
           <p className="text-sm mb-4">📧 support@flangtex.com</p>
           <div className="flex gap-4">
             {socialLinks.map(({ icon, label, href }) => (
