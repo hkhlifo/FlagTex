@@ -37,8 +37,27 @@ const Footer = () => {
 
         <div>
           <h4 className="text-lg font-medium text-[#FFFFFF] mb-4">Connect</h4>
-          <p className="text-sm mb-2">📍UAE-Based | Trusted Worldwide</p>
-          <p className="text-sm mb-4">📧 support@flangtex.com</p>
+          <div className="flex items-center gap-2 mb-2 px-3 py-1 rounded-md bg-gradient-to-r from-[#ffffff1a] to-[#ffffff0d] text-white shadow-md">
+            <img
+              src="/icons/gps.png"
+              alt="Located"
+              width={18}
+              height={18}
+              className="object-contain"
+            />
+            <span>USA-Based | Trusted Worldwide</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm mb-4">
+            <img
+              src="/icons/gmail.png"
+              alt="Email Icon"
+              width={18}
+              height={18}
+              className="object-contain"
+            />
+            <span>sales@flangtex.com</span>
+          </div>
           <div className="flex gap-4">
             {socialLinks.map(({ icon, label, href }) => (
               <Link key={label} href={href} aria-label={label}>

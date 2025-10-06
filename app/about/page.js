@@ -11,7 +11,7 @@ const About = () => {
             <section className="relative w-full pt-32 pb-16 px-6 md:px-12 bg-[#0f0f0f]">
                 <Fade direction="up" triggerOnce>
                     <div className="text-center max-w-4xl mx-auto">
-                        <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-white drop-shadow-xl mb-6">
+                        <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white drop-shadow-xl mb-6">
                             <span className="bg-gradient-to-r from-white via-[#D8CBB3] to-white bg-clip-text text-transparent">
                                 About FlangTex Trading LLC
                             </span>

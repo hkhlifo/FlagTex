@@ -4,6 +4,22 @@ import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 
 const Contact = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const subject = form.subject.value;
+        const message = form.message.value;
+
+        const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=sales@flangtex.com&su=${encodeURIComponent(
+            subject
+        )}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+
+        window.open(gmailLink, '_blank');
+    };
+
     return (
         <section className="min-h-screen w-full bg-[#0f0f0f] text-white font-[Montserrat] px-6 md:px-12 py-24">
             <Fade direction="up" triggerOnce>
@@ -33,15 +49,20 @@ const Contact = () => {
 
             {/* Contact Form */}
             <Fade direction="up" delay={200} triggerOnce>
-                <form className="max-w-3xl mx-auto bg-[#1a1a1a]/80 border border-[#333333] rounded-xl p-8 shadow-[0_0_20px_#8B0000]/10 backdrop-blur-md space-y-6">
+                <form
+                    onSubmit={handleSubmit}
+                    className="max-w-3xl mx-auto bg-[#1a1a1a]/80 border border-[#333333] rounded-xl p-8 shadow-[0_0_20px_#8B0000]/10 backdrop-blur-md space-y-6"
+                >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <input
+                            name="name"
                             type="text"
                             placeholder="Your Name"
                             className="bg-[#0f0f0f] border border-white/20 text-white px-4 py-3 rounded-md placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30"
                             required
                         />
                         <input
+                            name="email"
                             type="email"
                             placeholder="Your Email"
                             className="bg-[#0f0f0f] border border-white/20 text-white px-4 py-3 rounded-md placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30"
@@ -49,11 +70,13 @@ const Contact = () => {
                         />
                     </div>
                     <input
+                        name="subject"
                         type="text"
                         placeholder="Subject"
                         className="w-full bg-[#0f0f0f] border border-white/20 text-white px-4 py-3 rounded-md placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30"
                     />
                     <textarea
+                        name="message"
                         rows={6}
                         placeholder="Your Message"
                         className="w-full bg-[#0f0f0f] border border-white/20 text-white px-4 py-3 rounded-md placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 resize-none"
