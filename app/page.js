@@ -14,7 +14,7 @@ const Home = () => {
           muted
           loop
           className="w-full h-full object-cover">
-          <source src="/main-bg/flangtex.mp4" type="video/mp4" />
+          <source src="/main-bg/Flangtex.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
