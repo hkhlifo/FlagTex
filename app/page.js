@@ -7,18 +7,21 @@ import { Fade, Slide, Zoom } from 'react-awesome-reveal';
 const Home = () => {
   return (
     <div className="relative font-[Montserrat]">
-      {/* Video Background */}
+      {/* Video Background with Gradient Overlay */}
       <div className="fixed inset-0 z-[-1]">
         <video
           autoPlay
           muted
           loop
+          playsInline
           preload="auto"
           poster="/main-bg/backimg.png"
-          className="w-full h-full object-cover">
+          className="w-full h-full object-cover object-center"
+        >
           <source src="/main-bg/Flangtex.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent"></div>
       </div>
 
       {/* Scrollable Content */}
@@ -69,7 +72,6 @@ const Home = () => {
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-[#F5F5F5] drop-shadow-md">
                   Leading Supplier of Quality Piping Products
                 </h2>
-
               </Fade>
 
               <Slide direction="up" delay={200} triggerOnce>
@@ -82,31 +84,34 @@ const Home = () => {
             {/* Right */}
             <Zoom delay={200} triggerOnce>
               <div className="space-y-6 text-[#CCCCCC] text-md md:text-lg">
-                <div className="bg-[#000000]/30 p-6 rounded-xl shadow-md hover:shadow-[#8B0000]/30 transition-shadow duration-300">
-                  <h3 className="text-lg font-semibold text-[#FFFFFF] mb-2">Uncompromising Quality</h3>
-                  <p>
-                    Our products meet the strict operational and safety standards of modern industrial applications, ensuring reliability in every environment.
-                  </p>
-                </div>
-
-                <div className="bg-[#000000]/30 p-6 rounded-xl shadow-md hover:shadow-[#8B0000]/30 transition-shadow duration-300">
-                  <h3 className="text-lg font-semibold text-[#FFFFFF] mb-2">Built for Performance</h3>
-                  <p>
-                    Designed for durability and efficiency, our range helps clients maintain safety and productivity—even in the harshest conditions.
-                  </p>
-                </div>
-
-                <div className="bg-[#000000]/30 p-6 rounded-xl shadow-md hover:shadow-[#8B0000]/30 transition-shadow duration-300">
-                  <h3 className="text-lg font-semibold text-[#FFFFFF] mb-2">Tailored Solutions</h3>
-                  <p>
-                    We go beyond supply—offering expert guidance and full support to meet your project’s unique needs with precision and care.
-                  </p>
-                </div>
+                {[
+                  {
+                    title: 'Uncompromising Quality',
+                    text: 'Our products meet the strict operational and safety standards of modern industrial applications, ensuring reliability in every environment.',
+                  },
+                  {
+                    title: 'Built for Performance',
+                    text: 'Designed for durability and efficiency, our range helps clients maintain safety and productivity—even in the harshest conditions.',
+                  },
+                  {
+                    title: 'Tailored Solutions',
+                    text: 'We go beyond supply—offering expert guidance and full support to meet your project’s unique needs with precision and care.',
+                  },
+                ].map(({ title, text }) => (
+                  <div
+                    key={title}
+                    className="bg-[#000000]/30 p-6 rounded-xl shadow-md hover:shadow-[#8B0000]/30 transition-shadow duration-300"
+                  >
+                    <h3 className="text-lg font-semibold text-[#FFFFFF] mb-2">{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                ))}
               </div>
             </Zoom>
           </div>
         </section>
 
+        {/* Divider */}
         <div className="flex justify-center items-center gap-2">
           <span className="w-6 h-[1px] bg-white"></span>
           <span className="text-white/20 text-xl font-bold tracking-widest">{'{'}</span>
@@ -120,22 +125,18 @@ const Home = () => {
         {/* Third Section */}
         <section className="min-h-screen w-full bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f] text-[#FFFFFF] px-6 md:px-12 py-24 font-[Montserrat]">
           <div className="max-w-7xl mx-auto text-center">
-            {/* Heading */}
             <Fade direction="up" triggerOnce>
               <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-[#F5F5F5] drop-shadow-md">
                 Serving Communities and Industries Worldwide
               </h2>
-
             </Fade>
 
-            {/* Subheading */}
             <Slide direction="up" triggerOnce>
               <p className="text-lg md:text-xl text-[#808080] max-w-4xl mx-auto mb-12">
                 Whether you're a seasoned professional or just starting out, FlangTex is your trusted partner—delivering tailored solutions that drive efficiency, performance, and trust across industries.
               </p>
             </Slide>
 
-            {/* Stat Cards */}
             <Fade delay={200} triggerOnce>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 {[
@@ -145,8 +146,7 @@ const Home = () => {
                 ].map(({ icon, label }) => (
                   <div
                     key={label}
-                    className="group bg-[#000000]/30 p-6 rounded-xl shadow-md border border-[#808080]/30 transition-all duration-300
-               hover:scale-[1.02] hover:border-[#8B0000] hover:shadow-[0_0_20px_#8B0000]/30 hover:bg-[#1a1a1a]/50"
+                    className="group bg-[#000000]/30 p-6 rounded-xl shadow-md border border-[#808080]/30 transition-all duration-300 hover:scale-[1.02] hover:border-[#8B0000] hover:shadow-[0_0_20px_#8B0000]/30 hover:bg-[#1a1a1a]/50"
                   >
                     <img
                       src={icon}
@@ -156,25 +156,22 @@ const Home = () => {
                     <p className="text-lg font-medium text-[#FFFFFF]">{label}</p>
                   </div>
                 ))}
-
               </div>
             </Fade>
 
-            {/* Quote Highlight */}
             <Fade delay={300} triggerOnce>
               <blockquote className="max-w-3xl mx-auto text-[#CCCCCC] italic border-l-4 border-[#8B0000] pl-4 mb-12">
                 “Excellence, trust, and performance—every time. That’s the FlangTex promise.”
               </blockquote>
             </Fade>
 
-            {/* CTA */}
             <Fade delay={400} triggerOnce>
               <p className="text-md md:text-lg text-[#CCCCCC] max-w-4xl mx-auto mb-6">
                 We're committed to helping clients stay ahead in the oil and gas industry—no matter the challenge.
               </p>
 
               <p className="text-md md:text-lg text-[#CCCCCC] max-w-4xl mx-auto mb-8">
-                📩 Get in touch today to discuss your specific requirements and discover the value of working with a trusted global partner.
+                📩 Get in touch today to discuss your specific requirements
               </p>
 
               <Link
