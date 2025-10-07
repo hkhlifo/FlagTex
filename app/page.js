@@ -1,44 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Fade, Slide, Zoom } from 'react-awesome-reveal';
 
 const Home = () => {
-
-  const [currentVideo, setCurrentVideo] = useState(0);
-
-  const videoSources = [
-    '/main-bg/video (1).mp4',
-    '/main-bg/video (2).mp4',
-    '/main-bg/video (3).mp4',
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideo((prev) => (prev + 1) % videoSources.length);
-    }, 12000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-
   return (
     <div className="relative font-[Montserrat]">
       {/* Video Background */}
       <div className="fixed inset-0 z-[-1]">
         <video
-          key={currentVideo}
           autoPlay
           muted
           loop
-          playsInline
-          className="w-full h-full object-cover transition-opacity duration-1000"
-        >
-          <source src={videoSources[currentVideo]} type="video/mp4" />
+          className="w-full h-full object-cover">
+          <source src="/main-bg/flangtex.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
       </div>
-
 
       {/* Scrollable Content */}
       <div className="relative z-10">
