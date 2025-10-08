@@ -16,7 +16,7 @@ const About = () => {
                                 About FlangTex Trading LLC
                             </span>
                         </h1>
-                        
+
                         <p className="text-lg md:text-xl text-[#CCCCCC] leading-relaxed mb-10">
                             Precision-driven supply partner for the world's most demanding industries.
                         </p>
@@ -167,14 +167,22 @@ const About = () => {
                         ].map(({ icon, title, content }) => (
                             <div
                                 key={title}
-                                className="bg-[#1a1a1a]/80 border border-[#333333] p-8 rounded-xl shadow-[0_0_20px_#8B0000]/10 backdrop-blur-md flex flex-col items-center text-center"
+                                className="group relative bg-[#1a1a1a]/80 border border-[#333333] p-8 rounded-xl shadow-[0_0_20px_#8B0000]/10 backdrop-blur-md flex flex-col items-center text-center transition-all duration-500 hover:scale-[1.03] hover:border-[#8B0000] hover:shadow-[0_0_30px_#8B0000]/30 hover:bg-[#1a1a1a]/90"
                             >
+                                {/* Glowing ring effect */}
+                                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-[#8B0000] transition-all duration-500 pointer-events-none"></div>
+
+                                {/* Icon */}
                                 <img
                                     src={icon}
                                     alt={title}
-                                    className="w-12 h-12 mb-4 transition-transform duration-300 hover:scale-110"
+                                    className="w-12 h-12 mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:animate-pulse"
                                 />
+
+                                {/* Title */}
                                 <h3 className="text-xl font-semibold text-[#FFFFFF] mb-3">{title}</h3>
+
+                                {/* Content */}
                                 <p className="text-[#CCCCCC] text-md leading-relaxed tracking-wide">{content}</p>
                             </div>
                         ))}

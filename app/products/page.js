@@ -1,49 +1,180 @@
 'use client';
 
-import React from 'react';
-import dynamic from 'next/dynamic';
 
-// Lazy load each product section
-const PipePage = dynamic(() => import('./pipes/page'));
-const ValvesPage = dynamic(() => import('./valves/page'));
-const FlangesPage = dynamic(() => import('./flanges/page'));
-const StrainersPlatesPage = dynamic(() => import('./strainers-plates/page'));
-const NettingPage = dynamic(() => import('./netting/page'));
-const FloatTrimPage = dynamic(() => import('./float-trim/page'));
-const NailsPage = dynamic(() => import('./nails/page'));
-const StaplesSpecialsPage = dynamic(() => import('./staples-specials/page'));
+import React, { useState, useEffect } from 'react';
+import { Fade } from 'react-awesome-reveal';
+import { products, productCategories } from './products-data';
 
-const sections = [
-    { id: 'pipes', label: 'Pipes' },
-    { id: 'valves', label: 'Valves' },
-    { id: 'flanges', label: 'Flanges' },
-    { id: 'strainers-plates', label: 'Strainers & Plates' },
-    { id: 'netting', label: 'Netting' },
-    { id: 'float-trim', label: 'Float & Trim' },
-    { id: 'nails', label: 'Nails' },
-    { id: 'staples-specials', label: 'Staples & Specials' },
-];
 
 const Divider = () => (
-    <div className="flex justify-center py-2">
+    <div className="flex justify-center py-12">
         <svg width="120" height="24" viewBox="0 0 120 24" fill="none" className="opacity-20">
             <path d="M0 12h40M80 12h40M60 0v24" stroke="white" strokeWidth="1" />
         </svg>
     </div>
 );
 
+
+const ProductCard = ({ product, onViewDetails }) => (
+    <Fade triggerOnce cascade damping={0.10}>
+        <div className="group bg-white/90 rounded-2xl shadow-lg border border-white/40 p-6 flex flex-col h-full overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#ffcc33]">
+            <div className="aspect-[4/3] w-full mb-4 rounded-xl overflow-hidden bg-[#f6f6f6] flex items-center justify-center">
+                <img
+                    src={product.image && !product.image.startsWith('data:image/') ? product.image : '/placeholder.svg'}
+                    alt={product.name}
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                />
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-[#23272f] tracking-tight group-hover:text-[#ffcc33] transition-colors duration-300">{product.name}</h3>
+            <p className="text-[#23272f]/80 text-sm mb-4 line-clamp-3 font-medium group-hover:text-[#23272f] transition-colors duration-300">{product.description}</p>
+                    <div className="mt-auto flex flex-col items-end gap-2">
+                        <span className="self-start px-3 py-1 rounded-full bg-[#23272f]/5 text-[#b88c00] text-xs font-semibold tracking-wide mb-2 group-hover:bg-[#ffcc33]/10 transition">
+                            {product.category}
+                        </span>
+                                <button
+                                    onClick={() => onViewDetails(product)}
+                                    className="cursor-pointer flex items-center justify-center gap-2 bg-gradient-to-r from-[#1e293b] to-[#23272f] border border-[#ffcc33] text-[#ffcc33] font-semibold py-2 px-6 rounded-full hover:from-[#23272f] hover:to-[#1e293b] hover:bg-[#23272f]/80 hover:text-white transition-all duration-300 tracking-wide shadow-lg focus:outline-none focus:ring-2 focus:ring-[#ffcc33] text-base"
+                                >
+                                    <svg className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m6 0l-3-3m3 3l-3 3" /></svg>
+                                    <span className="uppercase text-sm tracking-widest">View Details</span>
+                                </button>
+                    </div>
+        </div>
+    </Fade>
+);
+
+// Premium Modal for Product Details (Glassmorphism, Responsive, Carousel, Iconic)
+const icons = {
+    features: (
+        <svg className="inline w-5 h-5 mr-1 text-[#ffcc33]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg>
+    ),
+    applications: (
+        <svg className="inline w-5 h-5 mr-1 text-[#6ee7b7]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12l2 2 4-4" /></svg>
+    ),
+    related: (
+        <svg className="inline w-5 h-5 mr-1 text-[#60a5fa]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12h8" /></svg>
+    ),
+};
+
+const ProductModal = ({ product, onClose }) => {
+    const [imgIdx, setImgIdx] = React.useState(0);
+    React.useEffect(() => {
+        if (!product) return;
+        const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [onClose, product]);
+    if (!product) return null;
+    const images = (product.images || []).filter(img => img && !img.startsWith('data:image/'));
+    const mainImg = images[imgIdx] || (product.image && !product.image.startsWith('data:image/') ? product.image : '/placeholder.svg');
+
+        return (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-[4px] px-0 sm:px-2 md:px-0" onClick={onClose}>
+                <div
+                    className="relative w-full max-w-4xl h-[100dvh] sm:h-auto max-h-[100dvh] flex flex-col md:flex-row bg-gradient-to-br from-[#181818]/90 to-[#23272f]/90 rounded-none sm:rounded-3xl shadow-2xl border border-white/20 overflow-hidden animate-fadeIn"
+                    onClick={e => e.stopPropagation()}
+                >
+                    {/* Close Button (sticky for mobile) */}
+                    <button
+                        onClick={onClose}
+                        className="fixed md:absolute top-4 right-4 z-20 bg-white/10 hover:bg-[#ffcc33]/80 text-white hover:text-[#181818] rounded-full w-12 h-12 flex items-center justify-center text-3xl font-bold shadow-lg focus:outline-none focus:ring-2 focus:ring-[#ffcc33] transition backdrop-blur"
+                        aria-label="Close"
+                        style={{ boxShadow: '0 4px 24px 0 #0008' }}
+                    >
+                        ×
+                    </button>
+                    {/* Image Carousel */}
+                    <div className="flex-1 flex flex-col items-center justify-center bg-gradient-to-br from-[#23272f] to-[#181818] p-3 sm:p-6 md:p-10 min-w-[0] max-w-full md:max-w-[420px] max-h-[40vh] sm:max-h-none">
+                        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-center justify-center mb-4 shadow-xl bg-[#181818]">
+                            <img
+                                src={mainImg}
+                                alt={product.name}
+                                className="object-contain w-full h-full drop-shadow-xl transition-all duration-300"
+                                style={{ maxHeight: '30vh', minHeight: 120 }}
+                            />
+                            {images.length > 1 && (
+                                <>
+                                    <button
+                                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-[#ffcc33]/80 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold shadow focus:outline-none"
+                                        onClick={() => setImgIdx((imgIdx - 1 + images.length) % images.length)}
+                                        aria-label="Previous image"
+                                    >&#8592;</button>
+                                    <button
+                                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-[#ffcc33]/80 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold shadow focus:outline-none"
+                                        onClick={() => setImgIdx((imgIdx + 1) % images.length)}
+                                        aria-label="Next image"
+                                    >&#8594;</button>
+                                </>
+                            )}
+                        </div>
+                        {images.length > 1 && (
+                            <div className="flex gap-2 mt-2 justify-center flex-wrap">
+                                {images.map((img, idx) => (
+                                    <img
+                                        key={idx}
+                                        src={img}
+                                        alt="Gallery"
+                                        className={`w-10 h-10 object-cover rounded border-2 ${imgIdx === idx ? 'border-[#ffcc33] scale-110' : 'border-white/20'} bg-[#222] cursor-pointer transition`}
+                                        onClick={() => setImgIdx(idx)}
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {/* Info Section (scrollable) */}
+                    <div className="flex-1 flex flex-col p-3 sm:p-6 md:p-10 min-w-[0] max-h-[60vh] sm:max-h-[90vh] overflow-y-auto scrollbar-thin scrollbar-thumb-[#ffcc33]/30 scrollbar-track-transparent">
+                        <h2 className="text-2xl md:text-3xl font-extrabold mb-1 text-white drop-shadow-lg tracking-tight leading-tight">{product.name}</h2>
+                        <p className="text-[#ffcc33] font-semibold mb-3 text-base md:text-lg">{product.category}</p>
+                        <p className="text-white/90 mb-4 whitespace-pre-line text-sm md:text-base leading-relaxed" style={{ fontFamily: 'inherit' }}>{product.longDescription || product.description}</p>
+                        {product.features && product.features.length > 0 && (
+                            <div className="mb-3">
+                                <h4 className="font-semibold text-white mb-1 flex items-center">{icons.features} Features</h4>
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 text-white/80 text-sm space-y-1 pl-2">
+                                    {product.features.map((f, i) => <li key={i} className="mb-1 before:content-['•'] before:mr-2 before:text-[#ffcc33]">{f}</li>)}
+                                </ul>
+                            </div>
+                        )}
+                        {product.applications && product.applications.length > 0 && (
+                            <div className="mb-3">
+                                <h4 className="font-semibold text-white mb-1 flex items-center">{icons.applications} Applications</h4>
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 text-white/80 text-sm space-y-1 pl-2">
+                                    {product.applications.map((a, i) => <li key={i} className="mb-1 before:content-['•'] before:mr-2 before:text-[#6ee7b7]">{a}</li>)}
+                                </ul>
+                            </div>
+                        )}
+                        {product.relatedProducts && product.relatedProducts.length > 0 && (
+                            <div className="mb-3">
+                                <h4 className="font-semibold text-white mb-1 flex items-center">{icons.related} Related Products</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {product.relatedProducts.map((rp, i) => (
+                                        <span key={i} className="inline-block bg-white/10 text-white/80 px-3 py-1 rounded-full text-xs font-medium border border-[#60a5fa]/30 hover:bg-[#60a5fa]/20 transition">
+                                            {rp.name}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+    );
+};
 const ProductPage = () => {
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const handleViewDetails = (product) => setSelectedProduct(product);
+    const handleCloseModal = () => setSelectedProduct(null);
+
     return (
-        <main className="bg-[#0f0f0f] text-white font-[Montserrat] scroll-smooth">
+        <main className="relative bg-[#0f0f0f] text-white font-[Montserrat] scroll-smooth min-h-screen overflow-x-hidden">
             {/* Hero Section */}
             <section className="pt-24 pb-6 px-6 md:px-12 text-center">
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4 drop-shadow-xl">
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4 drop-shadow-xl text-white">
                     Our Products
                 </h1>
                 <p className="text-[#CCCCCC] text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                     Precision-engineered components for industrial excellence. Explore our full range of piping systems, fittings, reinforcements, and specialty solutions.
                 </p>
-
                 {/* Decorative underline */}
                 <div className="flex justify-center items-center gap-2 m-2">
                     <span className="w-6 h-[1px] bg-white/20"></span>
@@ -56,58 +187,50 @@ const ProductPage = () => {
                 </div>
             </section>
 
-            {/* Mobile Sticky Navbar */}
-            <nav className="lg:hidden sticky top-0 z-50 bg-[#0f0f0f] border-b border-white/10 px-4 py-3">
-                <div className="relative">
-                    {/* Scrollable Menu */}
-                    <div className="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory text-sm font-medium text-white/70 pr-6">
-                        {sections.map((section) => (
-                            <a
-                                key={section.id}
-                                href={`#${section.id}`}
-                                className="snap-start px-4 py-2 whitespace-nowrap rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300"
-                            >
-                                {section.label}
-                            </a>
-                        ))}
-                    </div>
-
-                    {/* Gradient Scroll Hint */}
-                    <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-[#0f0f0f] to-transparent pointer-events-none" />
-                </div>
-            </nav>
-
-            {/* Desktop Scroll Menu */}
-            <aside className="hidden lg:block fixed top-32 right-8 z-50">
-                <div className="flex flex-col gap-3 bg-white/5 backdrop-blur-md rounded-2xl px-5 py-6 shadow-[0_0_30px_rgba(255,255,255,0.05)] border border-white/10">
-                    {sections.map((section) => (
-                        <a
-                            key={section.id}
-                            href={`#${section.id}`}
-                            className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-sm font-semibold text-white/80 hover:text-white transition-all duration-300 tracking-wide"
-                        >
-                            {section.label}
-                        </a>
-                    ))}
-                </div>
-            </aside>
-
-            {/* Section Anchors */}
-            <section id="pipes"><PipePage /></section>
-            <Divider />
-            <section id="valves"><ValvesPage /></section>
-            <Divider />
-            <section id="flanges"><FlangesPage /></section>
-            <Divider />
-            <section id="strainers-plates"><StrainersPlatesPage /></section>
-            <Divider />
-            <section id="netting"><NettingPage /></section>
-            <Divider />
-            <section id="float-trim"><FloatTrimPage /></section>
-            <Divider />
-            <section id="nails"><NailsPage /></section>
-            <Divider />
-            <section id="staples-specials"><StaplesSpecialsPage /></section>
+            {/* Product Categories */}
+            {productCategories.map((cat) => {
+                const catProducts = products.filter((p) => p.category === cat);
+                if (!catProducts.length) return null;
+                return (
+                    <section key={cat} className="px-4 md:px-12 py-10 max-w-7xl mx-auto" id={cat.replace(/[^a-z0-9]/gi, '-')}>
+                        <Fade triggerOnce direction="up">
+                            <div className="flex items-center gap-3 mb-6 mt-2">
+                                <div className="w-2 h-8 bg-[#ffcc33] rounded-full" />
+                                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white drop-shadow-sm">
+                                    {cat}
+                                </h2>
+                            </div>
+                        </Fade>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-2 md:px-0 py-2">
+                            {catProducts.map((product) => (
+                                <ProductCard key={product.id} product={product} onViewDetails={handleViewDetails} />
+                            ))}
+                        </div>
+                        <Divider />
+                    </section>
+                );
+            })}
+            <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+            {/* Custom scrollbar styles for modal */}
+            <style jsx global>{`
+                            .scrollbar-thin::-webkit-scrollbar {
+                                width: 8px;
+                                background: transparent;
+                            }
+                            .scrollbar-thin::-webkit-scrollbar-thumb {
+                                background: linear-gradient(135deg, #ffcc33 60%, #ffb347 100%);
+                                border-radius: 8px;
+                                box-shadow: 0 2px 8px #ffcc3340;
+                                border: 2px solid #23272f;
+                            }
+                            .scrollbar-thin::-webkit-scrollbar-track {
+                                background: transparent;
+                            }
+                            .scrollbar-thin {
+                                scrollbar-width: thin;
+                                scrollbar-color: #ffcc33 #23272f;
+                            }
+                        `}</style>
         </main>
     );
 };

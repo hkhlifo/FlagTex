@@ -23,7 +23,6 @@ const Home = () => {
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent"></div>
       </div>
-
       {/* Scrollable Content */}
       <div className="relative z-10">
         {/* First Section */}
