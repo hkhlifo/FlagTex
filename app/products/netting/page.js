@@ -1,10 +1,12 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 
 const NettingPage = () => {
     return (
+        <>
         <section className="min-h-screen w-full bg-[#0f0f0f] text-white font-[Montserrat] px-6 md:px-12 py-24">
             {/* Hero */}
             <Fade direction="up" triggerOnce>
@@ -101,6 +103,18 @@ const NettingPage = () => {
                 </div>
             </Fade>
         </section>
+         <Link
+                href="/products"
+                scroll={false}
+                className="fixed bottom-8 left-8 z-50 bg-gradient-to-r from-[#ffcc33] to-[#ffb347] text-[#23272f] font-bold px-6 py-3 rounded-full shadow-2xl border-2 border-[#ffcc33] hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(255,204,51,0.20)] transition-all duration-300 text-lg flex items-center gap-2"
+                style={{ boxShadow: '0 4px 24px 0 #ffcc3340' }}
+            >
+                <svg className="w-6 h-6 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Products
+            </Link>
+        </>
     );
 };
 

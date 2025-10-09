@@ -962,39 +962,6 @@ export const products = [
         ]
     },
     {
-        id: "pros-choice-safety-products",
-        name: "Pro’s Choice Professional Products",
-        category: "Safety Products & Equipment",
-        image: "https://www.paramountsafety.com.au/images/ProductImages/500/V6PB.jpg",
-        description: "Pro’s Choice offers a range of industrial-grade safety and cleaning products for professional use.",
-        longDescription: "Pro’s Choice Professional Products are engineered to maintain safety and hygiene in commercial and industrial environments. The product line includes powerful cleaners, disinfectants, and PPE support solutions widely used by maintenance teams and safety managers.",
-        features: [
-            "Professional-grade cleaning solutions",
-            "Wide range of safety applications",
-            "Effective against industrial contaminants",
-            "Supports compliance with safety standards",
-            "Ready-to-use packaging options",
-            "Safe for industrial environments"
-        ],
-        applications: [
-            "Industrial cleaning and maintenance",
-            "Facility safety compliance",
-            "Janitorial services",
-            "Manufacturing plants",
-            "Warehouses"
-        ],
-        images: [
-            "https://www.paramountsafety.com.au/images/ProductImages/500/V6PB.jpg",
-            "https://www.paramountsafety.com.au/Images/ProductImages/Medium/210C.jpeg",
-            "https://www.paramountsafety.com.au/Images/ProductImages/Medium/PC822-3_1.jpg",
-        ],
-        relatedProducts: [
-            { id: "mechanix-gloves", name: "Mechanix Gloves", category: "Safety Products & Equipment", image: "/placeholder.svg?height=400&width=400" },
-            { id: "radnor-welding-safety-products", name: "Radnor Welding & Safety Products", category: "Safety Products & Equipment", image: "/placeholder.svg?height=400&width=400" }
-
-        ]
-    },
-    {
         id: "uline-safety-products",
         name: "Uline Safety Products",
         category: "Safety Products & Equipment",
@@ -2255,38 +2222,7 @@ export const products = [
             { id: "gagemaker-gages", name: "Gagemaker Gages", category: "Cutting & Measuring Tools", image: "/placeholder.svg?height=400&width=400" }
         ]
     },
-    // Morse Taps
-    {
-        id: "morse-cutting-tools",
-        name: "Morse Taps & Cutting Tools",
-        category: "Cutting & Measuring Tools",
-        image: "https://m.media-amazon.com/images/W/MEDIAX_1215821-T1/images/I/415hHSFvzoL._SY445_SX342_QL70_FMwebp_.jpg",
-        description: "Morse cutting tools are engineered for precision machining and metalworking applications.",
-        longDescription: "Morse offers a complete line of taps, drills, end mills, and reamers designed for performance and accuracy. These tools are suitable for a wide range of materials and industries, from general machining to aerospace.",
-        features: [
-            "High-speed steel and carbide options",
-            "Precision-ground cutting edges",
-            "Wide range of geometries",
-            "Long tool life and durability",
-            "Ideal for CNC and manual operations",
-            "Available in standard and metric sizes"
-        ],
-        applications: [
-            "General machining",
-            "Aerospace components",
-            "Automotive parts",
-            "Tool and die making",
-            "Metal fabrication shops"
-        ],
-        images: [
-            "https://m.media-amazon.com/images/W/MEDIAX_1215821-T1/images/I/415hHSFvzoL._SY445_SX342_QL70_FMwebp_.jpg",
-            "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSoFWzptrIX-AdnTyLlm5aOH4Ssi88jdVjO8csfDNAd-f2DF9zpBslemu9KRLDoIKOzt2YHGyP-hotDIO-n-jzvCbPATDxESAvUaIPPyq95uVKHrbaZzlnK-Q",
-        ],
-        relatedProducts: [
-            { id: "starrett-precision-measuring-tools", name: "Starrett Precision Measuring Tools", category: "Cutting & Measuring Tools", image: "/placeholder.svg?height=400&width=400" },
-            { id: "gagemaker-gages", name: "Gagemaker Gages", category: "Cutting & Measuring Tools", image: "/placeholder.svg?height=400&width=400" }
-        ]
-    },
+
     //King Brinelle Hardness Testers
     {
         id: "king-brinelle-hardness-tester",
@@ -4759,7 +4695,7 @@ export const products = [
         name: "NovaGard Silicone Greases",
         category: "Miscellaneous Products",
         image: "https://novagard.com/wp-content/uploads/2022/05/Product-Thumbnail-Versilube-Silicone-Grease_v1.0.jpg",
-        description: "NovaGard’s silicone greases offer superior lubrication and dielectric performance.",
+        description: "NovaGard's silicone greases offer superior lubrication and dielectric performance.",
         longDescription: "NovaGard silicone greases are formulated to provide high-performance lubrication and sealing in both industrial and consumer applications. These greases are known for their thermal stability, water resistance, and dielectric properties.",
         features: [
             "Oxidation resistant",
