@@ -437,7 +437,7 @@ const ProductPage = () => {
                     <span className="block h-1 w-32 rounded-full bg-gradient-to-r from-[#ffcc33] via-[#ffb347] to-transparent animate-pulse" />
                 </div> */}
                 <p className="text-[#CCCCCC] text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-center mt-6">
-                    Premium, precision-engineered solutions for every industry—trusted by leaders, delivered by FlagTex.
+                    Premium, precision-engineered solutions for every industry—trusted by leaders, delivered by FlangTex.
                 </p>
             </section>
             {/* Main Products Section - Premium Carousel */}
