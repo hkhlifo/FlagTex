@@ -12,8 +12,9 @@ const Navbar = () => {
     const navItems = [
         { label: 'Home', path: '/' },
         { label: 'About Us', path: '/about' },
+        { label: 'Products', path: '/products' }, 
         { label: 'Services', path: '/services' },
-        { label: 'Products', path: '/products' },
+        { label: 'FAQ\'s', path: '/faq' },       
         { label: 'Contact', path: '/contact' },
     ];
 
@@ -26,38 +27,37 @@ const Navbar = () => {
                         <img
                             src="/Logo5.png"
                             alt="FlangTex Icon"
-                            className="h-8 md:h-12 w-auto object-contain transition-transform duration-300 ease-in-out group-hover:scale-105"
+                            className="h-8 lg:h-12 w-auto object-contain transition-transform duration-300 ease-in-out group-hover:scale-105"
                         />
                         <img
                             src="/Logo7.png"
                             alt="FlangTex Text"
-                            className="h-8 md:h-12 w-auto object-contain transition-transform duration-300 ease-in-out group-hover:scale-105"
+                            className="h-8 lg:h-12 w-auto object-contain transition-transform duration-300 ease-in-out group-hover:scale-105"
                         />
                     </div>
                 </Link>
 
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex space-x-8">
+                {/* Desktop Nav (visible on lg and up) */}
+                <nav className="hidden lg:flex space-x-8">
                     {navItems.map(({ label, path }) => (
                         <Link
                             key={label}
                             href={path}
                             className={`relative font-medium tracking-wide px-3 py-2 transition-all duration-300 ease-in-out
-    ${pathname === path
+                ${pathname === path
                                     ? 'text-[#FFFFFF] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-[#FFFFFF]'
                                     : 'text-[#808080] hover:text-[#FFFFFF] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-[#FFFFFF]/70 after:transition-all after:duration-300'}
-  `}
+              `}
                         >
                             {label}
                         </Link>
-
                     ))}
                 </nav>
 
-                {/* Mobile Toggle */}
+                {/* Mobile/Tablet Toggle (visible below lg) */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden text-[#FFFFFF] focus:outline-none transition-transform duration-300"
+                    className="lg:hidden text-[#FFFFFF] focus:outline-none transition-transform duration-300"
                     aria-label="Toggle Menu"
                 >
                     {isOpen ? (
@@ -72,21 +72,36 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile/Tablet Menu */}
             {isOpen && (
                 <Slide direction="down" triggerOnce>
-                    <div className="md:hidden px-6 py-6 flex flex-col items-center space-y-4
-      backdrop-blur-xl bg-gradient-to-br from-[#000000]/60 via-[#1a1a1a]/50 to-[#000000]/60
-      border-t border-[#808080]/30 shadow-inner shadow-[#8B0000]/10 rounded-b-xl">
-                        {navItems.map(({ label, path }) => (
+                    <div className="lg:hidden px-6 py-6 flex flex-col items-center space-y-4
+            backdrop-blur-xl bg-gradient-to-br from-[#000000]/60 via-[#1a1a1a]/50 to-[#000000]/60
+            border-t border-[#808080]/30 shadow-inner shadow-[#8B0000]/10 rounded-b-xl"
+                    >
+                        {/* {navItems.map(({ label, path }) => (
                             <Link
                                 key={label}
                                 href={path}
                                 className={`relative text-center font-medium tracking-wide px-4 py-2 transition-all duration-300 ease-in-out
-            ${pathname === path
+                  ${pathname === path
                                         ? 'text-[#FFFFFF] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[2px] after:w-6 after:bg-[#FFFFFF]'
                                         : 'text-[#808080] hover:text-[#FFFFFF] hover:after:absolute hover:after:left-1/2 hover:after:-translate-x-1/2 hover:after:bottom-0 hover:after:h-[2px] hover:after:w-6 hover:after:bg-[#FFFFFF]/70'}
-          `}
+                `}
+                            >
+                                {label}
+                            </Link>
+                        ))} */}
+                        {navItems.map(({ label, path }) => (
+                            <Link
+                                key={label}
+                                href={path}
+                                onClick={() => setIsOpen(false)} // 👈 closes dropdown on click
+                                className={`relative text-center font-medium tracking-wide px-4 py-2 transition-all duration-300 ease-in-out
+      ${pathname === path
+                                        ? 'text-[#FFFFFF] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[2px] after:w-6 after:bg-[#FFFFFF]'
+                                        : 'text-[#808080] hover:text-[#FFFFFF] hover:after:absolute hover:after:left-1/2 hover:after:-translate-x-1/2 hover:after:bottom-0 hover:after:h-[2px] hover:after:w-6 hover:after:bg-[#FFFFFF]/70'}
+    `}
                             >
                                 {label}
                             </Link>
@@ -94,8 +109,6 @@ const Navbar = () => {
                     </div>
                 </Slide>
             )}
-
-
         </header>
     );
 };

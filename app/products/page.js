@@ -433,9 +433,9 @@ const ProductPage = () => {
                     <span className="text-white/40 text-xl font-bold tracking-widest">{'}'}</span>
                     <span className="w-6 h-[1px] bg-white/20"></span>
                 </div>
-                <div className="flex justify-center mt-4">
+                {/* <div className="flex justify-center mt-4">
                     <span className="block h-1 w-32 rounded-full bg-gradient-to-r from-[#ffcc33] via-[#ffb347] to-transparent animate-pulse" />
-                </div>
+                </div> */}
                 <p className="text-[#CCCCCC] text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-center mt-6">
                     Premium, precision-engineered solutions for every industry—trusted by leaders, delivered by FlagTex.
                 </p>

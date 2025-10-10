@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "FlangTex",
+  title: "FLANGTEX | Industrial Flanges & Fittings Supplier",
   description: "Precision-engineered digital experiences for industrial excellence. FLANGTEX blends bold design with seamless functionality—where innovation meets impact.",
 };
 
