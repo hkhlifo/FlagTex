@@ -37,7 +37,7 @@ const NettingPage = () => {
 
             {/* Stucco Netting Section */}
             <Fade direction="up" delay={100} triggerOnce>
-                <div id="stucco" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-24">
+                <div id="stucco" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-24 relative">
                     {/* Image Placeholder */}
                     <div className="w-full h-64 bg-white/10 rounded-lg shadow-inner flex items-center justify-center">
                         <img
@@ -49,7 +49,13 @@ const NettingPage = () => {
 
                     {/* Content */}
                     <div className="space-y-6">
-                        <h2 className="text-3xl font-bold">Stucco Netting (ICC-ES Certified)</h2>
+                        <h2 className="text-3xl font-bold flex items-center gap-2">
+                            Stucco Netting
+                            <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#ffd700] via-[#ffcc33] to-[#ffb347] text-[#23272f] text-xs font-bold shadow-lg border border-[#ffcc33] animate-pulse flex items-center gap-1 ml-2" style={{letterSpacing: '0.04em'}}>
+                                <svg className="w-4 h-4 mr-1 text-[#b88c00]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                ICC Certified
+                            </span>
+                        </h2>
                         <p className="text-[#CCCCCC] leading-relaxed">
                             FlangTex supplies high-quality stucco mesh for structural reinforcement. Made from hot-dip galvanized iron wire, it enhances adhesion, prevents cracking, and ensures long-term durability.
                         </p>

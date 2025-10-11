@@ -194,13 +194,6 @@ const ProductSidebar = ({ activeId, onNav }) => {
 
 
 
-// import React, { useState, useEffect } from 'react';
-// import Link from 'next/link';
-// import { Fade } from 'react-awesome-reveal';
-// import { products, productCategories } from './products-data';
-// Main products data for the premium section
-
-
 
 const Divider = () => (
     <div className="flex justify-center py-12">
@@ -213,7 +206,27 @@ const Divider = () => (
 
 const ProductCard = ({ product, onViewDetails }) => (
     <Fade triggerOnce cascade damping={0.10}>
-        <div className="group bg-white/90 rounded-2xl shadow-lg border border-white/40 p-6 flex flex-col h-full overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#ffcc33]">
+        <div className="group bg-white/90 rounded-2xl shadow-lg border border-white/40 p-6 flex flex-col h-full overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#ffcc33] relative">
+            {/* ICC Certificate Tag */}
+            {/* {(() => {
+                const iccProducts = [
+                    'Float',
+                    'Furring nails',
+                    'J-metal',
+                    'Roofing nails',
+                    'Stucco netting'
+                ];
+                // Case-insensitive match for product.name
+                if (iccProducts.some(name => product.name && product.name.toLowerCase().includes(name.toLowerCase()))) {
+                    return (
+                        <span className="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-gradient-to-r from-[#ffd700] via-[#ffcc33] to-[#ffb347] text-[#23272f] text-[0.75rem] font-bold shadow-lg border border-[#ffcc33] animate-pulse flex items-center gap-1" style={{ letterSpacing: '0.04em' }}>
+                            <svg className="w-4 h-4 mr-1 text-[#b88c00]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            ICC Certified
+                        </span>
+                    );
+                }
+                return null;
+            })()} */}
             <div className="aspect-[4/3] w-full mb-4 rounded-xl overflow-hidden bg-[#f6f6f6] flex items-center justify-center">
                 <img
                     src={product.image && !product.image.startsWith('data:image/') ? product.image : '/placeholder.svg'}
@@ -421,7 +434,7 @@ const ProductPage = () => {
                     <span className="text-[#ffcc33] font-bold text-base tracking-widest uppercase">FlangTex Core Range</span>
                     <span className="w-2 h-2 rounded-full bg-[#ffcc33] animate-pulse"></span>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2 drop-shadow-xl text-white">
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-2 drop-shadow-xl text-white">
                     Discover Our Signature Products
                 </h1>
                 <div className="flex justify-center items-center gap-2 m-2">

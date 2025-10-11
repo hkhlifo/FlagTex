@@ -33,7 +33,7 @@ const FloatTrimPage = () => {
 
                 {/* Float Section */}
                 <Fade direction="up" delay={100} triggerOnce>
-                    <div id="float" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-24">
+                    <div id="float" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-24 relative">
                         {/* Image Placeholder */}
                         <div className="w-full h-64 bg-gradient-to-br from-white/10 to-white/5 rounded-lg shadow-inner flex items-center justify-center">
                             <img
@@ -45,7 +45,13 @@ const FloatTrimPage = () => {
 
                         {/* Content */}
                         <div className="space-y-6">
-                            <h2 className="text-3xl font-bold">Finishing Floats</h2>
+                            <h2 className="text-3xl font-bold flex items-center gap-2">
+                                Finishing Floats
+                                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#ffd700] via-[#ffcc33] to-[#ffb347] text-[#23272f] text-xs font-bold shadow-lg border border-[#ffcc33] animate-pulse flex items-center gap-1 ml-2" style={{letterSpacing: '0.04em'}}>
+                                    <svg className="w-4 h-4 mr-1 text-[#b88c00]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                    ICC Certified
+                                </span>
+                            </h2>
                             <p className="text-[#CCCCCC] leading-relaxed">
                                 Built for smooth, even finishes across plaster, stucco, grout, and concrete. FlangTex floats feature ergonomic pine handles and fine-texture sponge pads for superior surface results.
                             </p>
@@ -63,10 +69,16 @@ const FloatTrimPage = () => {
 
                 {/* J-Metal / J-Weep Section */}
                 <Fade direction="up" delay={200} triggerOnce>
-                    <div id="trim" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+                    <div id="trim" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start relative">
                         {/* Content First (Reversed Layout) */}
                         <div className="space-y-6 order-2 md:order-1">
-                            <h2 className="text-3xl font-bold">J-Metal / J-Weep Trim</h2>
+                            <h2 className="text-3xl font-bold flex items-center gap-2">
+                                J-Metal / J-Weep Trim
+                                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#ffd700] via-[#ffcc33] to-[#ffb347] text-[#23272f] text-xs font-bold shadow-lg border border-[#ffcc33] animate-pulse flex items-center gap-1 ml-2" style={{letterSpacing: '0.04em'}}>
+                                    <svg className="w-4 h-4 mr-1 text-[#b88c00]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                    ICC Certified
+                                </span>
+                            </h2>
                             <p className="text-[#CCCCCC] leading-relaxed">
                                 FlangTex J-Metal trim ensures clean terminations and effective moisture drainage for stucco, EIFS, and thin stone applications. Built from galvanized steel for long-term durability and code compliance.
                             </p>

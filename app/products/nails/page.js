@@ -38,7 +38,7 @@ const NailsPage = () => {
 
                 {/* Roofing Nails Section */}
                 <Fade direction="up" delay={100} triggerOnce>
-                    <div id="roofing" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-24">
+                    <div id="roofing" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-24 relative">
                         {/* Image Placeholder */}
                         <div className="w-full h-64 bg-gradient-to-br from-white/10 to-white/5 rounded-lg shadow-inner flex items-center justify-center">
                             <img
@@ -50,7 +50,13 @@ const NailsPage = () => {
 
                         {/* Content */}
                         <div className="space-y-6">
-                            <h2 className="text-3xl font-bold">Roofing Nails</h2>
+                            <h2 className="text-3xl font-bold flex items-center gap-2">
+                                Roofing Nails
+                                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#ffd700] via-[#ffcc33] to-[#ffb347] text-[#23272f] text-xs font-bold shadow-lg border border-[#ffcc33] animate-pulse flex items-center gap-1 ml-2" style={{letterSpacing: '0.04em'}}>
+                                    <svg className="w-4 h-4 mr-1 text-[#b88c00]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                    ICC Certified
+                                </span>
+                            </h2>
                             <p className="text-[#CCCCCC] leading-relaxed">
                                 FlangTex roofing nails are built for high pull-out strength and corrosion resistance. Available in smooth, ring, or screw shank designs, they’re ideal for asphalt shingles and metal roofing panels.
                             </p>
@@ -67,10 +73,16 @@ const NailsPage = () => {
 
                 {/* Furring Nails Section */}
                 <Fade direction="up" delay={200} triggerOnce>
-                    <div id="furring" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+                    <div id="furring" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start relative">
                         {/* Content First (Reversed Layout) */}
                         <div className="space-y-6 order-2 md:order-1">
-                            <h2 className="text-3xl font-bold">Furring Nails</h2>
+                            <h2 className="text-3xl font-bold flex items-center gap-2">
+                                Furring Nails
+                                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#ffd700] via-[#ffcc33] to-[#ffb347] text-[#23272f] text-xs font-bold shadow-lg border border-[#ffcc33] animate-pulse flex items-center gap-1 ml-2" style={{letterSpacing: '0.04em'}}>
+                                    <svg className="w-4 h-4 mr-1 text-[#b88c00]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                    ICC Certified
+                                </span>
+                            </h2>
                             <p className="text-[#CCCCCC] leading-relaxed">
                                 Designed for stucco wire attachment, FlangTex furring nails come pre-assembled with a ¼″ wad for proper embedment spacing. Electro-galvanized for corrosion resistance and built for high holding power.
                             </p>
