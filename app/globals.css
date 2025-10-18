@@ -1,14 +1,35 @@
 @import "tailwindcss";
 
 html {
-  background: #000;
+  background: linear-gradient(135deg, #f9f9f9 0%, #eaeaea 100%);
   scroll-behavior: smooth;
-  /* scroll-behavior: auto; */
   scrollbar-width: none;
 }
 
 body {
   font-family: var(--font-montserrat), sans-serif;
+  color: #23272f;
+  background: transparent;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism utility for premium sections */
+.glass {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 32px 0 rgba(139,0,0,0.06);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  border: 1px solid #e0e0e0;
+}
+
+/* Accent color for premium look */
+:root {
+  --accent: #e63946;
+  --neutral: #808080;
+  --primary: #23272f;
+  --background: #f9f9f9;
 }
 
 

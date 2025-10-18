@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 
-const StaplesSpecialsPage = () => {
+const SpecialItemsPage = () => {
     return (
         <>
             <section className="min-h-screen w-full bg-[#0f0f0f] text-white font-[Montserrat] px-6 md:px-12 py-24">
@@ -12,10 +12,10 @@ const StaplesSpecialsPage = () => {
                 <Fade direction="up" triggerOnce>
                     <div className="max-w-5xl mx-auto text-center mb-20">
                         <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4 drop-shadow-xl">
-                            Staples & Special Items
+                            Special Items
                         </h1>
                         <p className="text-[#CCCCCC] text-lg md:text-xl leading-relaxed">
-                            Built for strength. Delivered with precision.
+                            Precision-engineered solutions for unique industrial needs.
                         </p>
 
                         {/* Decorative underline */}
@@ -35,38 +35,10 @@ const StaplesSpecialsPage = () => {
                     </div>
                 </Fade>
 
-                {/* Staples Section */}
-                <Fade direction="up" delay={100} triggerOnce>
-                    <div id="staples" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start mb-24">
-                        {/* Image Placeholder */}
-                        <div className="w-full h-64 bg-gradient-to-br from-white/10 to-white/5 rounded-lg shadow-inner flex items-center justify-center">
-                            <img
-                                src="/parts_img/staples.jpg"
-                                alt="Staples"
-                                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                            />
-                        </div>
-
-                        {/* Content */}
-                        <div className="space-y-6">
-                            <h2 className="text-3xl font-bold">Staples</h2>
-                            <p className="text-[#CCCCCC] leading-relaxed">
-                                FlangTex staples are engineered for heavy-duty joining in roofing, masonry, packaging, and general construction. Built for penetration and reliability across diverse tasks.
-                            </p>
-                            <ul className="text-sm text-white/70 space-y-1 list-disc pl-5">
-                                <li>Sizes: 3/8" × 1/4" to 1" × 2"</li>
-                                <li>Applications: Roofing felt, pallet crating, framing</li>
-                                <li>Benefits: Durable, jam-free, wide size coverage</li>
-                                <li>Use Cases: Site work, packaging, sheathing</li>
-                            </ul>
-                        </div>
-                    </div>
-                </Fade>
-
                 {/* Special Items Section */}
-                <Fade direction="up" delay={200} triggerOnce>
-                    <div id="specials" className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-                        {/* Content First (Reversed Layout) */}
+                <Fade direction="up" delay={100} triggerOnce>
+                    <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+                        {/* Content First */}
                         <div className="space-y-6 order-2 md:order-1">
                             <h2 className="text-3xl font-bold">Special Items</h2>
                             <p className="text-[#CCCCCC] leading-relaxed">
@@ -81,24 +53,24 @@ const StaplesSpecialsPage = () => {
                             </ul>
                         </div>
 
-                        {/* Image Placeholder */}
+                        {/* Image */}
                         <div className="w-full h-64 bg-gradient-to-br from-white/10 to-white/5 rounded-lg shadow-inner flex items-center justify-center order-1 md:order-2">
                             <img
                                 src="/parts_img/special.jpg"
                                 alt="Special Product"
-                                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 rounded-lg"
                             />
                         </div>
                     </div>
                 </Fade>
 
                 {/* CTA */}
-                <Fade direction="up" delay={300} triggerOnce>
+                <Fade direction="up" delay={200} triggerOnce>
                     <div className="max-w-3xl mx-auto text-center mt-32 flex flex-col justify-center items-center">
                         <p className="text-[#AAAAAA] text-lg italic mb-6">
-                            FlangTex staples and specialty items—crafted for performance, delivered with precision.
+                            FlangTex specialty items—engineered for precision, built for impact.
                         </p>
-                        <Link href={"/contact"}>
+                        <Link href="/contact">
                             <button className="bg-white/10 cursor-pointer border border-white/20 text-white px-6 py-3 rounded-md hover:bg-white/20 hover:border-white/30 transition-all duration-300 tracking-wide backdrop-blur-sm flex items-center justify-center gap-3">
                                 <img
                                     src="/icons/monitor.png"
@@ -111,19 +83,8 @@ const StaplesSpecialsPage = () => {
                     </div>
                 </Fade>
             </section>
-            <Link
-                href="/products"
-                scroll={false}
-                className="fixed bottom-8 left-8 z-50 bg-gradient-to-r from-[#ffcc33] to-[#ffb347] text-[#23272f] font-bold px-6 py-3 rounded-full shadow-2xl border-2 border-[#ffcc33] hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(255,204,51,0.20)] transition-all duration-300 text-lg flex items-center gap-2"
-                style={{ boxShadow: '0 4px 24px 0 #ffcc3340' }}
-            >
-                <svg className="w-6 h-6 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-                Back to Products
-            </Link>
         </>
     );
 };
 
-export default StaplesSpecialsPage;
+export default SpecialItemsPage;

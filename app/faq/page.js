@@ -150,14 +150,23 @@ export default function FAQPage() {
       <section className="max-w-3xl mx-auto text-center pt-20 pb-12 px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight drop-shadow-xl text-[#FFFFFF]">General FAQs</h1>
         <div className="flex justify-center mb-4">
-          <span className="block h-1 w-24 rounded-full bg-[#8B0000]" />
+          {/* <span className="block h-1 w-24 rounded-full bg-[#8B0000]" /> */}
+          <div className="flex justify-center items-center gap-2">
+            <span className="w-6 h-[1px] bg-white/20"></span>
+            <span className="text-white/40 text-xl font-bold tracking-widest">{'{'}</span>
+            <span className="w-2 h-[1px] bg-white/40"></span>
+            <span className="text-white text-sm font-bold">FLANGTEX</span>
+            <span className="w-2 h-[1px] bg-white/40"></span>
+            <span className="text-white/40 text-xl font-bold tracking-widest">{'}'}</span>
+            <span className="w-6 h-[1px] bg-white/20"></span>
+          </div>
         </div>
         <p className="text-lg md:text-xl text-[#FFFFFF]/80 mb-2">At FlangTex Trading LLC, your satisfaction and success are our top priorities. We are dedicated to providing the most reliable products and solutions for your industrial needs.</p>
-        <p className="text-base text-[#FFFFFF]/60">Click on a question to reveal the answer. If you don't find what you're looking for, please reach out to us directly—our team is always here to help.</p>
+        <p className="text-base text-[#FFFFFF]/60">Click on a question to see the answer. If you don't find what you're looking for, please reach out to us directly—our team is always here to help.</p>
       </section>
 
       {/* General FAQs */}
-  <section className="max-w-2xl mx-auto px-2 sm:px-4 mb-20">
+      <section className="max-w-2xl mx-auto px-2 sm:px-4 mb-20">
         <FaqAccordion faqs={generalFaqs} group="general" />
       </section>
 

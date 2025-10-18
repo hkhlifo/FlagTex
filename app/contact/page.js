@@ -31,17 +31,13 @@ const Contact = () => {
                         Whether you have a project in mind or just want to say hello, we're here to listen.
                     </p>
 
-                    <div className="flex justify-center items-center gap-2 mt-6">
+                    <div className="flex justify-center items-center gap-2">
                         <span className="w-6 h-[1px] bg-white/20"></span>
-                        <span className="w-4 h-[1px] bg-white/30"></span>
+                        <span className="text-white/40 text-xl font-bold tracking-widest">{'{'}</span>
                         <span className="w-2 h-[1px] bg-white/40"></span>
-                        <span className="w-2 h-2 rotate-45 bg-white/30"></span>
-                        <div className="relative w-3 h-3 rotate-45 bg-white">
-                            <span className="absolute inset-0 m-auto w-1 h-1 rounded-full bg-[#0f0f0f]"></span>
-                        </div>
-                        <span className="w-2 h-2 rotate-45 bg-white/30"></span>
+                        <span className="text-white text-sm font-bold">FLANGTEX</span>
                         <span className="w-2 h-[1px] bg-white/40"></span>
-                        <span className="w-4 h-[1px] bg-white/30"></span>
+                        <span className="text-white/40 text-xl font-bold tracking-widest">{'}'}</span>
                         <span className="w-6 h-[1px] bg-white/20"></span>
                     </div>
                 </div>

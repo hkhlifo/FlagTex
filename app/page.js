@@ -8,7 +8,8 @@ const Home = () => {
   return (
     <div className="relative font-[Montserrat]">
       {/* Video Background with Gradient Overlay */}
-      <div className="fixed inset-0 z-[-1]">
+      <div className="fixed inset-0 z-[-1] overflow-hidden">
+        {/* Desktop Video */}
         <video
           autoPlay
           muted
@@ -16,12 +17,21 @@ const Home = () => {
           playsInline
           preload="auto"
           poster="/main-bg/backimg.png"
-          className="w-full h-full object-cover object-center"
+          className="hidden sm:block w-full h-full object-cover mt-9.5"
         >
           <source src="/main-bg/Flangtex.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent"></div>
+
+        {/* Mobile Fallback Image */}
+        <img
+          src="/main-bg/backimg.png"
+          alt="FlangTex Background"
+          className="block sm:hidden w-full h-full object-cover object-[center_top]"
+        />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/10 sm:from-black/40 sm:via-black/20 sm:to-transparent"></div>
       </div>
       {/* Scrollable Content */}
       <div className="relative z-10">

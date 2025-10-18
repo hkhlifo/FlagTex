@@ -9,67 +9,9 @@ import { products, productCategories } from './products-data';
 
 
 
-const MAIN_PRODUCTS = [
-    {
-        slug: 'flanges',
-        title: 'Industrial Flanges',
-        tagline: 'Engineered for strength. Certified for performance.',
-        img: '/parts_img/flanges.jpg',
-        color: 'from-[#23272f] to-[#181818]'
-    },
-    {
-        slug: 'float-trim',
-        title: 'Finishing Tools & Trim',
-        tagline: 'Precision-crafted for smooth finishes and clean terminations.',
-        img: '/parts_img/float.jpg',
-        color: 'from-[#23272f] to-[#1e293b]'
-    },
-    {
-        slug: 'nails',
-        title: 'Roofing & Furring Nails',
-        tagline: 'Engineered for grip. Trusted for durability.',
-        img: '/parts_img/furring.jpg',
-        color: 'from-[#23272f] to-[#23272f]'
-    },
-    {
-        slug: 'netting',
-        title: 'Netting Solutions',
-        tagline: 'Reinforcement and protection for every need.',
-        img: '/parts_img/stucco.jpg',
-        color: 'from-[#23272f] to-[#181818]'
-    },
-    {
-        slug: 'pipes',
-        title: 'Pipes & Pipe Fittings',
-        tagline: 'Engineered for precision. Trusted across industries.',
-        img: '/parts_img/pipefit.jpg',
-        color: 'from-[#23272f] to-[#1e293b]'
-    },
-    {
-        slug: 'valves',
-        title: 'Industrial Valves',
-        tagline: 'Precision control for demanding environments.',
-        img: '/parts_img/valves.jpg',
-        color: 'from-[#23272f] to-[#181818]'
-    },
-    {
-        slug: 'strainers-plates',
-        title: 'Strainers & Plates',
-        tagline: 'Engineered for filtration. Trusted for structure.',
-        img: '/parts_img/plates.jpg',
-        color: 'from-[#23272f] to-[#23272f]'
-    },
-];
 
-
-// Sidebar navigation sections (main + regular)
+// Sidebar navigation sections (only industrial products)
 const SIDEBAR_SECTIONS = [
-    ...MAIN_PRODUCTS.map(p => ({
-        id: p.slug,
-        label: p.title,
-        icon: p.img,
-        isMain: true
-    })),
     ...productCategories.map(cat => ({
         id: cat.replace(/[^a-z0-9]/gi, '-'),
         label: cat,
@@ -79,6 +21,79 @@ const SIDEBAR_SECTIONS = [
 ];
 
 // Floating Sidebar (desktop only)
+const ProductSidebar = ({ activeId, onNav }) => {
+    // Sidebar expands on hover using state
+    const [expanded, setExpanded] = React.useState(false);
+    return (
+        <aside
+            className={`hidden lg:flex flex-col fixed top-24 right-0 z-50 h-[70vh] transition-all duration-300 ${expanded ? 'w-72' : 'w-10'}`}
+            onMouseEnter={() => setExpanded(true)}
+            onMouseLeave={() => setExpanded(false)}
+            style={{ minWidth: expanded ? '288px' : '40px', maxWidth: '320px' }}
+        >
+            <div
+                className="h-full flex flex-col bg-white/70 backdrop-blur-xl border-l-4 border-[#ffcc33] rounded-l-2xl shadow-xl overflow-hidden relative transition-all duration-300"
+                style={{ width: '100%' }}
+            >
+                {/* Tab for Quick Navigate */}
+                {!expanded && (
+                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 bg-[#ffcc33] text-[#23272f] font-bold px-3 py-2 rounded-l-xl shadow-lg cursor-pointer select-none text-sm tracking-wide transition-all duration-300" style={{ writingMode: 'vertical-rl', letterSpacing: '0.04em' }}>
+                        Quick Navigate
+                    </div>
+                )}
+                <div className={`flex-1 flex flex-col items-center w-full transition-all duration-300 ${expanded ? 'items-stretch' : ''}`}>
+                    <div className={`font-bold text-lg text-[#f6d500] mb-2 mt-4 select-none px-6 transition-all duration-300 ${expanded ? 'opacity-100' : 'opacity-0'}`}>Quick Navigate</div>
+                    <nav className={`flex-1 overflow-y-auto custom-scrollbar pr-1 px-4 transition-all duration-300 ${expanded ? 'opacity-100' : 'opacity-0'}`}
+                        style={{ maxHeight: 'calc(70vh - 3.5rem)', minHeight: 0 }}>
+                        {/* Oil and gas piping products heading */}
+                        {/* <div className="font-semibold text-base text-[#000] mb-2 mt-2">Oil and gas piping products</div> */}
+                        {/* {SIDEBAR_SECTIONS.filter(sec => sec.isMain).map((sec) => (
+                            <button
+                                key={sec.id}
+                                onClick={() => onNav(sec.id)}
+                                className={`w-full text-left px-3 py-2 rounded-md font-medium transition-all duration-200 mb-1
+                                    ${activeId === sec.id
+                                        ? 'bg-[#ffcc33]/20 text-black shadow border-l-4 border-[#ffcc33]'
+                                        : 'text-gray-800 hover:bg-[#ffcc33]/10 hover:text-[#ffcc33]'}
+                                `}
+                                style={{ outline: 'none', fontSize: '1rem' }}
+                            >
+                                {sec.label}
+                            </button>
+                        ))} */}
+                        {/* Industrial products heading */}
+                        <div className="font-semibold text-base text-[#000] mb-2 mt-4">Industrial products</div>
+                        {SIDEBAR_SECTIONS.filter(sec => !sec.isMain).map((sec) => (
+                            <button
+                                key={sec.id}
+                                onClick={() => onNav(sec.id)}
+                                className={`w-full text-left px-3 py-2 rounded-md font-medium transition-all duration-200 mb-1
+                                    ${activeId === sec.id
+                                        ? 'bg-[#ffcc33]/20 text-black shadow border-l-4 border-[#ffcc33]'
+                                        : 'text-gray-800 hover:bg-[#ffcc33]/10 hover:text-[#ffcc33]'}
+                                `}
+                                style={{ outline: 'none', fontSize: '1rem' }}
+                            >
+                                {sec.label}
+                            </button>
+                        ))}
+                    </nav>
+                </div>
+                <style jsx>{`
+                    .custom-scrollbar::-webkit-scrollbar {
+                        width: 6px;
+                        background: transparent;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-thumb {
+                        background: #ffcc33aa;
+                        border-radius: 6px;
+                    }
+                `}</style>
+            </div>
+        </aside>
+    );
+};
+
 
 // Mobile Quick Navigate FAB and Bottom Sheet
 const MobileQuickNavigate = ({ sections, onNav }) => {
@@ -111,7 +126,23 @@ const MobileQuickNavigate = ({ sections, onNav }) => {
                             <button className="text-2xl text-[#23272f] font-bold px-2" onClick={() => setOpen(false)} aria-label="Close">&times;</button>
                         </div>
                         <nav className="flex flex-col gap-2 max-h-[50vh] overflow-y-auto custom-scrollbar">
-                            {sections.map(sec => (
+                            {/* Oil and gas piping products heading */}
+                            {/* <div className="font-semibold text-base text-[#000] mb-2 mt-2">Oil and gas piping products</div> */}
+                            {/* {sections.filter(sec => sec.isMain).map(sec => (
+                                <button
+                                    key={sec.id}
+                                    onClick={() => {
+                                        setOpen(false);
+                                        setTimeout(() => onNav(sec.id), 200);
+                                    }}
+                                    className="w-full text-left px-4 py-4 rounded-xl font-semibold text-base bg-[#23272f]/5 hover:bg-[#ffcc33]/10 text-[#23272f] border border-[#ffcc33]/10 shadow-sm transition-all duration-200"
+                                >
+                                    {sec.label}
+                                </button>
+                            ))} */}
+                            {/* Industrial products heading */}
+                            <div className="font-semibold text-base text-[#000] mb-2 mt-4">Industrial products</div>
+                            {sections.filter(sec => !sec.isMain).map(sec => (
                                 <button
                                     key={sec.id}
                                     onClick={() => {
@@ -137,73 +168,6 @@ const MobileQuickNavigate = ({ sections, onNav }) => {
         </>
     );
 };
-const ProductSidebar = ({ activeId, onNav }) => {
-    // Sidebar expands on hover using state
-    const [expanded, setExpanded] = React.useState(false);
-    return (
-        <aside
-            className={`hidden lg:flex flex-col fixed top-24 right-0 z-50 h-[70vh] transition-all duration-300 ${expanded ? 'w-72' : 'w-10'}`}
-            onMouseEnter={() => setExpanded(true)}
-            onMouseLeave={() => setExpanded(false)}
-            style={{ minWidth: expanded ? '288px' : '40px', maxWidth: '320px' }}
-        >
-            <div
-                className="h-full flex flex-col bg-white/70 backdrop-blur-xl border-l-4 border-[#ffcc33] rounded-l-2xl shadow-xl overflow-hidden relative transition-all duration-300"
-                style={{ width: '100%' }}
-            >
-                {/* Tab for Quick Navigate */}
-                {!expanded && (
-                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 bg-[#ffcc33] text-[#23272f] font-bold px-3 py-2 rounded-l-xl shadow-lg cursor-pointer select-none text-sm tracking-wide transition-all duration-300" style={{ writingMode: 'vertical-rl', letterSpacing: '0.04em' }}>
-                        Quick Navigate
-                    </div>
-                )}
-                <div className={`flex-1 flex flex-col items-center w-full transition-all duration-300 ${expanded ? 'items-stretch' : ''}`}>
-                    <div className={`font-bold text-lg text-[#8f721add] mb-2 mt-4 select-none px-6 transition-all duration-300 ${expanded ? 'opacity-100' : 'opacity-0'}`}>Quick Navigate</div>
-                    <nav className={`flex-1 overflow-y-auto custom-scrollbar pr-1 px-4 transition-all duration-300 ${expanded ? 'opacity-100' : 'opacity-0'}`}
-                        style={{ maxHeight: 'calc(70vh - 3.5rem)', minHeight: 0 }}>
-                        {SIDEBAR_SECTIONS.map((sec) => (
-                            <button
-                                key={sec.id}
-                                onClick={() => onNav(sec.id)}
-                                className={`w-full text-left px-3 py-2 rounded-md font-medium transition-all duration-200 mb-1
-                                    ${activeId === sec.id
-                                        ? 'bg-[#ffcc33]/20 text-black shadow border-l-4 border-[#ffcc33]'
-                                        : 'text-gray-800 hover:bg-[#ffcc33]/10 hover:text-[#ffcc33]'}
-                                `}
-                                style={{ outline: 'none', fontSize: '1rem' }}
-                            >
-                                {sec.label}
-                            </button>
-                        ))}
-                    </nav>
-                </div>
-                <style jsx>{`
-                    .custom-scrollbar::-webkit-scrollbar {
-                        width: 6px;
-                        background: transparent;
-                    }
-                    .custom-scrollbar::-webkit-scrollbar-thumb {
-                        background: #ffcc33aa;
-                        border-radius: 6px;
-                    }
-                `}</style>
-            </div>
-        </aside>
-    );
-};
-
-
-
-
-const Divider = () => (
-    <div className="flex justify-center py-12">
-        <svg width="120" height="24" viewBox="0 0 120 24" fill="none" className="opacity-20">
-            <path d="M0 12h40M80 12h40M60 0v24" stroke="white" strokeWidth="1" />
-        </svg>
-    </div>
-);
-
-
 const ProductCard = ({ product, onViewDetails }) => (
     <Fade triggerOnce cascade damping={0.10}>
         <div className="group bg-white/90 rounded-2xl shadow-lg border border-white/40 p-6 flex flex-col h-full overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#ffcc33] relative">
@@ -428,14 +392,14 @@ const ProductPage = () => {
             <ProductSidebar activeId={activeSection} onNav={handleSidebarNav} />
             {/* Mobile Quick Navigate FAB and Sheet */}
             <MobileQuickNavigate sections={SIDEBAR_SECTIONS} onNav={handleSidebarNav} />
-            {/* Hero Section */}
+            {/* Industrial Products Hero Section */}
             <section className="pt-24 pb-6 px-6 md:px-12 text-center">
-                <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gradient-to-r from-[#ffcc33]/20 via-[#ffb347]/10 to-transparent border border-[#ffcc33]/30 shadow-lg mx-auto mb-4 animate-fadeIn">
-                    <span className="text-[#ffcc33] font-bold text-base tracking-widest uppercase">FlangTex Core Range</span>
+                <div className="inline-flex items-center gap-3 mt-4 px-6 py-2 rounded-full bg-gradient-to-r from-[#ffcc33]/20 via-[#ffb347]/10 to-transparent border border-[#ffcc33]/30 shadow-lg mx-auto mb-4 animate-fadeIn">
+                    <span className="text-[#ffcc33] font-bold text-base tracking-widest uppercase">Industrial Products</span>
                     <span className="w-2 h-2 rounded-full bg-[#ffcc33] animate-pulse"></span>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-2 drop-shadow-xl text-white">
-                    Discover Our Signature Products
+                <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-2 drop-shadow-xl text-white">
+                    Powering Industry. Elevating Performance.
                 </h1>
                 <div className="flex justify-center items-center gap-2 m-2">
                     <span className="w-6 h-[1px] bg-white/20"></span>
@@ -446,49 +410,11 @@ const ProductPage = () => {
                     <span className="text-white/40 text-xl font-bold tracking-widest">{'}'}</span>
                     <span className="w-6 h-[1px] bg-white/20"></span>
                 </div>
-                {/* <div className="flex justify-center mt-4">
-                    <span className="block h-1 w-32 rounded-full bg-gradient-to-r from-[#ffcc33] via-[#ffb347] to-transparent animate-pulse" />
-                </div> */}
                 <p className="text-[#CCCCCC] text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-center mt-6">
-                    Premium, precision-engineered solutions for every industry—trusted by leaders, delivered by FlangTex.
+                    Discover our premium range of industrial products—engineered for reliability, safety, and performance in every application.
                 </p>
             </section>
-            {/* Main Products Section - Premium Carousel */}
-            <section className="relative pb-2 px-0 md:px-8 max-w-full overflow-x-visible transition-all duration-300" id="main-products">
-                <div className="relative">
-                    <div className="flex gap-8 md:gap-12 overflow-x-auto pb-4 px-4 md:px-0 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-[#ffcc33]/30 scrollbar-track-transparent">
-                        {MAIN_PRODUCTS.map((prod, idx) => (
-                            <Fade key={prod.slug} triggerOnce direction="up" delay={idx * 60}>
-                                <Link href={`/products/${prod.slug}`} className={`group block min-w-[320px] max-w-xs snap-center ${idx === MAIN_PRODUCTS.length - 1 ? 'mr-8 md:mr-16' : ''}`} id={prod.slug}>
-                                    <div className={`relative bg-gradient-to-br ${prod.color} rounded-3xl shadow-2xl border border-white/10 p-6 flex flex-col min-h-[420px] h-[420px] overflow-hidden transition-transform duration-500 hover:scale-[1.07] hover:shadow-[0_8px_40px_0_rgba(255,204,51,0.10)] hover:border-[#ffcc33]/40 backdrop-blur-xl hover:-rotate-1 hover:-translate-y-2`}>
-                                        {/* Floating gold accent */}
-                                        <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#ffcc33]/30 via-[#ffb347]/20 to-transparent rounded-full blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-700 pointer-events-none" />
-                                        <div className="aspect-[4/3] w-full mb-4 rounded-xl overflow-hidden bg-[#23272f] flex items-center justify-center shadow-lg">
-                                            <img
-                                                src={prod.img}
-                                                alt={prod.title}
-                                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                                                loading="lazy"
-                                            />
-                                        </div>
-                                        <h3 className="text-2xl font-bold mb-2 text-white drop-shadow-lg tracking-tight group-hover:text-[#ffcc33] transition-colors duration-300">
-                                            {prod.title}
-                                        </h3>
-                                        <p className="text-white/80 text-base mb-2 font-medium group-hover:text-white/90 transition-colors duration-300">
-                                            {prod.tagline}
-                                        </p>
-                                        <span className="mt-auto inline-block px-5 py-2 rounded-full bg-[#ffcc33]/10 text-[#ffcc33] text-xs font-bold tracking-wide shadow group-hover:bg-[#ffcc33]/20 transition self-end">
-                                            View Details
-                                        </span>
-                                    </div>
-                                </Link>
-                            </Fade>
-                        ))}
-                    </div>
-                    {/* Gold gradient fade on right for effect */}
-                    <div className="pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-[#0f0f0f] via-[#0f0f0f]/80 to-transparent rounded-3xl" />
-                </div>
-            </section>
+            {/* Removed main products carousel section */}
 
             {/* Product Categories */}
             {productCategories.map((cat) => {
@@ -509,12 +435,32 @@ const ProductPage = () => {
                                 <ProductCard key={product.id} product={product} onViewDetails={handleViewDetails} />
                             ))}
                         </div>
-                        <Divider />
+                        <div className="bg-[#0f0f0f] flex justify-center py-6">
+                            <div className="bg-[#0f0f0f] flex justify-center ">
+                                <div className="flex items-center gap-2">
+                                    <span className="w-6 h-[1px] bg-white/20"></span>
+                                    <span className="w-4 h-[1px] bg-white/30"></span>
+                                    <span className="w-2 h-[1px] bg-white/40"></span>
+
+                                    <span className="w-2 h-2 rotate-45 bg-white/40"></span>
+
+                                    <div className="relative w-3 h-3 rotate-45 bg-white">
+                                        <span className="absolute inset-0 m-auto w-1 h-1 rounded-full bg-[#0f0f0f]"></span>
+                                    </div>
+
+                                    <span className="w-2 h-2 rotate-45 bg-white/40"></span>
+
+                                    <span className="w-2 h-[1px] bg-white/40"></span>
+                                    <span className="w-4 h-[1px] bg-white/30"></span>
+                                    <span className="w-6 h-[1px] bg-white/20"></span>
+                                </div>
+                            </div>
+                        </div>
+
                     </section>
                 );
             })}
             <ProductModal product={selectedProduct} onClose={handleCloseModal} />
-            {/* Removed BackToProductsBtn: only close (X) button remains in modal */}
             {/* Custom scrollbar styles for modal */}
             <style jsx global>{`
                             .scrollbar-thin::-webkit-scrollbar {

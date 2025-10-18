@@ -31,7 +31,7 @@ const InspectionSection = () => {
   return (
     <div>
       {/* Desktop Navbar */}
-      <nav className="hidden lg:flex fixed top-[100px] left-1/2 -translate-x-1/2 z-40 bg-[#0f0f0f]/80 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 shadow-lg">
+      {/* <nav className="hidden lg:flex fixed top-[100px] left-1/2 -translate-x-1/2 z-40 bg-[#0f0f0f]/80 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 shadow-lg">
         <ul className="flex gap-4 text-sm font-medium text-white/70">
           {['inspection', 'testing', 'cladding'].map((id) => (
             <li key={id}>
@@ -44,7 +44,7 @@ const InspectionSection = () => {
             </li>
           ))}
         </ul>
-      </nav>
+      </nav> */}
 
       {/* Mobile Navbar */}
       <nav className="lg:hidden fixed top-[80px] left-1/2 -translate-x-1/2 z-40 bg-[#0f0f0f]/80 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 shadow-lg">
