@@ -85,15 +85,13 @@ const Navbar = () => {
                             aria-expanded={openDropdown === 'services'}
                         >
                             {staticNav[2].label}
-                            <span className="ml-1 inline-block">
-                                <svg
-                                    className={`w-3 h-3 transition-transform duration-300 ${openDropdown === 'services' ? 'rotate-45 text-[#e63946]' : 'rotate-0 text-[#ffcc33]'}`}
-                                    viewBox="0 0 16 16" fill="currentColor"
-                                    style={{ display: 'inline', verticalAlign: 'middle' }}
-                                >
-                                    <rect x="5" y="5" width="6" height="6" rx="1.5" />
-                                </svg>
-                            </span>
+                            <svg
+                                className={`ml-1 w-3 h-3 transition-transform duration-300 ${openDropdown === 'services' ? 'rotate-180 text-[#e63946]' : 'rotate-0 text-[#23272f]'}`}
+                                fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="2"
+                                style={{ display: 'inline', verticalAlign: 'middle' }}
+                            >
+                                <polyline points="4 10 8 6 12 10" />
+                            </svg>
                         </button>
                         {openDropdown === 'services' && (
                             <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg rounded-lg z-50 flex flex-col min-h-[60px]"
@@ -118,15 +116,13 @@ const Navbar = () => {
                             aria-expanded={dropdownVisible}
                         >
                             Products
-                            <span className="ml-1 inline-block">
-                                <svg
-                                    className={`w-3 h-3 transition-transform duration-300 ${dropdownVisible ? 'rotate-45 text-[#e63946]' : 'rotate-0 text-[#ffcc33]'}`}
-                                    viewBox="0 0 16 16" fill="currentColor"
-                                    style={{ display: 'inline', verticalAlign: 'middle' }}
-                                >
-                                    <rect x="5" y="5" width="6" height="6" rx="1.5" />
-                                </svg>
-                            </span>
+                            <svg
+                                className={`ml-1 w-3 h-3 transition-transform duration-300 ${dropdownVisible ? 'rotate-180 text-[#e63946]' : 'rotate-0 text-[#23272f]'}`}
+                                fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="2"
+                                style={{ display: 'inline', verticalAlign: 'middle' }}
+                            >
+                                <polyline points="4 10 8 6 12 10" />
+                            </svg>
                         </button>
                         {dropdownVisible && (
                             <div className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg rounded-lg z-50 flex flex-col min-h-[100px]"
