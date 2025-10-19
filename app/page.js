@@ -7,7 +7,6 @@ import { Fade, Slide, Zoom } from 'react-awesome-reveal';
 const Home = () => {
   return (
     <div className="relative font-[Montserrat]">
-      {/* Video Background with Gradient Overlay */}
       <div className="fixed inset-0 z-[-1] overflow-hidden">
         {/* Desktop Video */}
         <video
@@ -17,18 +16,25 @@ const Home = () => {
           playsInline
           preload="auto"
           poster="/main-bg/backimg.png"
-          className="hidden sm:block w-full h-full object-cover mt-9.5"
+          className="hidden sm:block w-full h-full mt-9 object-cover object-center"
         >
           <source src="/main-bg/Flangtex.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
-        {/* Mobile Fallback Image */}
-        <img
-          src="/main-bg/backimg.png"
-          alt="FlangTex Background"
+        {/* Mobile Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/main-bg/backimg.png"
           className="block sm:hidden w-full h-full object-cover object-[center_top]"
-        />
+        >
+          <source src="/main-bg/flangmob.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/10 sm:from-black/40 sm:via-black/20 sm:to-transparent"></div>
