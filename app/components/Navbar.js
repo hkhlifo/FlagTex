@@ -47,10 +47,10 @@ const Navbar = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     return (
         <header className="fixed top-0 left-0 w-full z-50 font-[Montserrat] backdrop-blur-xl bg-gradient-to-br from-white via-[#f9f9f9]/80 to-[#eaeaea]/90 border-b border-[#e0e0e0]/40 shadow-[0_8px_32px_0_rgba(139,0,0,0.06)]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+            <div className="max-w-7xl px-4 sm:px-4 py-3 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" aria-label="FlangTex Home" className="group flex items-center gap-3">
-                    <div className="flex items-center justify-center ">
+                <Link href="/" aria-label="FlangTex Home" className="flex items-center">
+                    <div className="flex items-center justify-start">
                         <img
                             src="/final.svg"
                             alt="FlangTex Logo"
@@ -59,18 +59,18 @@ const Navbar = () => {
                     </div>
                 </Link>
                 {/* Desktop Nav with multi-level dropdowns */}
-                <nav className="hidden lg:flex space-x-6 items-center">
+                <nav className="hidden lg:flex space-x-8 items-center">
                     {/* Home */}
                     <Link
                         href={staticNav[0].path}
-                        className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[15px] px-4 py-2 transition-all duration-300 ${pathname === staticNav[0].path ? 'text-[#e63946]' : ''}`}
+                        className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[16px] px-4 py-2 transition-all duration-300 ${pathname === staticNav[0].path ? 'text-[#e63946]' : ''}`}
                     >
                         {staticNav[0].label}
                     </Link>
                     {/* About Us */}
                     <Link
                         href={staticNav[1].path}
-                        className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[15px] px-4 py-2 transition-all duration-300 ${pathname === staticNav[1].path ? 'text-[#e63946]' : ''}`}
+                        className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[16px] px-4 py-2 transition-all duration-300 ${pathname === staticNav[1].path ? 'text-[#e63946]' : ''}`}
                     >
                         {staticNav[1].label}
                     </Link>
@@ -80,7 +80,7 @@ const Navbar = () => {
                         onMouseLeave={() => setOpenDropdown(null)}
                     >
                         <button
-                            className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[15px] px-4 py-2 transition-all duration-300 flex items-center gap-1 ${pathname === staticNav[2].path ? 'text-[#e63946]' : ''}`}
+                            className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[16px] px-4 py-2 transition-all duration-300 flex items-center gap-1 ${pathname === staticNav[2].path ? 'text-[#e63946]' : ''}`}
                             aria-haspopup="true"
                             aria-expanded={openDropdown === 'services'}
                         >
@@ -97,9 +97,9 @@ const Navbar = () => {
                             <div className="absolute top-full left-0 w-56 bg-white shadow-lg rounded-lg z-50 flex flex-col min-h-[60px]"
                                 style={{ minWidth: '180px', marginTop: '1px' }}
                             >
-                                <Link href="/services/#inspection" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[15px]">Inspection</Link>
-                                <Link href="/services/#testing" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[15px]">Testing</Link>
-                                <Link href="/services/#cladding" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[15px]">Cladding</Link>
+                                <Link href="/services/#inspection" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[16px]">Inspection</Link>
+                                <Link href="/services/#testing" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[16px]">Testing</Link>
+                                <Link href="/services/#cladding" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[16px]">Cladding</Link>
                             </div>
                         )}
                     </div>
@@ -110,7 +110,7 @@ const Navbar = () => {
                         onMouseLeave={() => { setDropdownVisible(false); setOpenDropdown(null); }}
                     >
                         <button
-                            className="font-semibold text-[#23272f] hover:text-[#e63946] text-[15px] px-4 py-2 transition-all duration-300"
+                            className="font-semibold text-[#23272f] hover:text-[#e63946] text-[16px] px-4 py-2 transition-all duration-300"
                             onClick={() => setDropdownVisible((v) => !v)}
                             aria-haspopup="true"
                             aria-expanded={dropdownVisible}
@@ -156,7 +156,7 @@ const Navbar = () => {
                                         )}
                                     </div>
                                 ))}
-                                <Link href="/products" className="block px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[15px]">Industrial Products</Link>
+                                <Link href="/products" className="block px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[16px]">Industrial Products</Link>
                             </div>
                         )}
                     </div>
@@ -165,7 +165,7 @@ const Navbar = () => {
                         <Link
                             key={label}
                             href={path}
-                            className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[15px] px-4 py-2 transition-all duration-300 ${pathname === path ? 'text-[#e63946]' : ''}`}
+                            className={`font-semibold text-[#23272f] hover:text-[#e63946] text-[16px] px-4 py-2 transition-all duration-300 ${pathname === path ? 'text-[#e63946]' : ''}`}
                         >
                             {label}
                         </Link>
