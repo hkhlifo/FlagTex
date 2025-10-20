@@ -49,7 +49,7 @@ const Navbar = () => {
         <header className="fixed top-0 left-0 w-full z-50 font-[Montserrat] backdrop-blur-xl bg-gradient-to-br from-white via-[#f9f9f9]/80 to-[#eaeaea]/90 border-b border-[#e0e0e0]/40 shadow-[0_8px_32px_0_rgba(139,0,0,0.06)]">
             <div className="max-w-7xl px-4 sm:px-4 py-3 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" aria-label="FlangTex Home" className="flex items-center">
+                <Link href="/" aria-label="FlangTex Home" className=" group flex items-center">
                     <div className="flex items-center justify-start">
                         <img
                             src="/final.svg"
