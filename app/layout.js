@@ -2,7 +2,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import WhatsApp from "./components/Whatsapp";
+import Whats from "./components/Whatsapp";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${montserrat.variable} antialiased bg-[#f9f9f9] text-[#23272f]`}>
         <Navbar />
-        <WhatsApp />
+        <Whats />
           {children}
         <Footer />
       </body>
