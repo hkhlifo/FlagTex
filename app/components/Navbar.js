@@ -94,8 +94,8 @@ const Navbar = () => {
                             </svg>
                         </button>
                         {openDropdown === 'services' && (
-                            <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg rounded-lg z-50 flex flex-col min-h-[60px]"
-                                style={{ minWidth: '180px' }}
+                            <div className="absolute top-full left-0 w-56 bg-white shadow-lg rounded-lg z-50 flex flex-col min-h-[60px]"
+                                style={{ minWidth: '180px', marginTop: '1px' }}
                             >
                                 <Link href="/services/#inspection" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[15px]">Inspection</Link>
                                 <Link href="/services/#testing" className="px-6 py-4 font-semibold text-[#23272f] hover:text-[#e63946] text-[15px]">Testing</Link>
@@ -125,8 +125,8 @@ const Navbar = () => {
                             </svg>
                         </button>
                         {dropdownVisible && (
-                            <div className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg rounded-lg z-50 flex flex-col min-h-[100px]"
-                                style={{ minWidth: '220px' }}
+                            <div className="absolute top-full left-0 w-64 bg-white shadow-lg rounded-lg z-50 flex flex-col min-h-[100px]"
+                                style={{ minWidth: '220px', marginTop: '1px' }}
                             >
                                 {productsMenu.map((item, idx) => (
                                     <div
@@ -138,8 +138,8 @@ const Navbar = () => {
                                         <span className="font-semibold text-gray-800">{item.label}</span>
                                         {/* Flyout submenu to the right */}
                                         {openDropdown === idx && (
-                                            <div className="absolute top-0 right-full mr-2 w-56 bg-white shadow-xl rounded-lg border border-[#e0e0e0]/40 z-50 flex flex-col"
-                                                style={{ minWidth: '200px' }}
+                                            <div className="absolute top-0 right-full w-56 bg-white shadow-xl rounded-lg border border-[#e0e0e0]/40 z-50 flex flex-col"
+                                                style={{ minWidth: '200px', marginTop: '2px', marginRight: '1px' }}
                                                 onMouseEnter={() => setOpenDropdown(idx)}
                                                 onMouseLeave={() => setOpenDropdown(null)}
                                             >
